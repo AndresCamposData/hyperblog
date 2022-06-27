@@ -1,5 +1,6 @@
-Esta es la bografía de Luis Andres Campos.
+Esta es la historia de Luis Andres Campos.
 
-Luis Andres Campos tienen 36 años y vive el Bogotá
+Luis Andres Campos tienen 36 años y nació en Colombia-Bogotá, 
+ha vivido en México.
 
-Mañana nos enfocaremos en su vida laboral
+Hoy hablaremos de su vida y obra maestra. En este momento está aprendiendo ------->  Git y github  <---------
