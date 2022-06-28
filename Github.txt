@@ -1,0 +1,62 @@
+========================================================================================================
+============================================== GITHUB ==================================================
+========================================================================================================
+
+Debemos crear una cuenta en www.github.com.
+
+A manera de ejemplo vamos a seguir los siguientes pasos:
+
+    1. Crear un repositorio nuevo llamado: hyperblog.
+    2. Adicionamos en este repositorío un README.md 
+
+Y listo...
+
+Seguido será configurar la conexión de nuestro local con nuestro repositorio remoto en  Github vía 
+SSH (esto es muy importante!!!!).
+
+Debemos configurar el enlace con el repositorio remoto:
+
+    a. git remote (no debe generar nada pues NO hay conexión)
+    b. git remote add origin git@github.com:AndresCamposData/hyperblog.git
+
+Con b. hemos realizado la conexión vía SSH, ahora, al escribir:
+
+    a. git remote -v
+
+Debemos tener como salida:
+
+    origin	git@github.com:AndresCamposData/hyperblog.git (fetch)
+    origin	git@github.com:AndresCamposData/hyperblog.git (push)
+
+Note que tenemos de donde y hacia donde vamos a conectar con el repositorio remoto.
+
+Deseamos que es nuestro repositorio local tengamos los archivos del repositorio remoto, para ello vamos
+a escribir:
+
+    a. git pull origin main
+
+Esto generará problemas porque debemos enlazar los commit remotos con los locales. Para solucionar esto
+debemos escribir:
+
+    a. git pull origin main --allow-unrelated-histories
+
+Esto permitirá que se presente el enlace. Al listar debemos tener en nuestro repositorio local el nuevo
+archivo README.md
+
+Finalmente, deseamos tener nuestros documentos que están en el repositorio local en el repositorio remoto,
+para ello vamos a escribir:
+
+    a. git push origin master
+
+Donde master es la rama donde tenemos nuestro estado "deseado" del proyecto.
+
+Finalmente, en Github debemos realizar un pull request y realizar el merge, (todo lo anterior en Github).
+
+**Notas:** 
+
+    1. pull (jalar) tiene la siguiente lógica: Vamos a jalar del repositorio remoto (origin) la rama
+    main. Esta rama main, puede ser cualquier rama del repositorio remoto.
+
+    2. push (empujar) tiene la siguiente lógica: Vamos a empujar del repositorio local al repositorio
+    remoto  (origin) la rama master del local.
+
