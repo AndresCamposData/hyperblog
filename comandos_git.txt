@@ -85,9 +85,13 @@ Para realizar ambos, podemos hacer:
 master es nuestra rama principal, esta se crea al inicializar git, cada vez que hemos hecho un cambio, 
 estos viven en los commits que hemos hecho y están en distintos momentos (commit) es la rama master.
 
+Al crear muchas ramas las podemos ver con:
+
+    a. git branch
+
 El commit más reciente (el último commit) es lo que se conoce como cabecera (HEAD). Supongamos que 
-para probar algún desarrollo que se nos vino en mente,sin afectar el trabajo desarrollado hasta el 
-último commit. Es este caso vamos a crear un camino paralelo a la rama master, formando una nueva rama.
+deseamos probar algún desarrollo que se nos vino en mente, sin afectar el trabajo desarrollado hasta el 
+último commit. En este caso, vamos a crear un camino paralelo a la rama master, formando una nueva rama.
 Esta rama debe contener toda la información que tenemos hasta el último commit. Al estar en la nueva
 rama, la rama master no los va a observar, hasta que estas no sean fusionadas (merge).
 
@@ -100,10 +104,39 @@ Para cambiar a la nueva rama:
 Al estar en esta nueva rama, los siguientes commits vivirán en dicha rama sin afectar a la rama master.
 
 Si deseamos volver a la rama master, basta con ir a la terminal y escribir:
-    a. git checkout master.
+    a. git checkout master
 
 De lo anterior cabe resaltar que "checkout" nos va a servir para movernos entre ramas. Al volver a la rama
 master, los archivos de nuestro proyecto se actualizarán de manera automatica al contenido del último
-commit enviado y dicha rama.
+commit enviado y dicha rama. Más aún, al cambiar a las distintas ramas (si es que existen) los archivos
+estarán precisamente en el último commit de dicha rama.
 
+===========
+== MERGE ==
+===========
 
+Al tener una nueva rama y estar en ella, podemos cambiar algunos archivos de nuestro proyecto, supongamos
+además que estos cmabios fueron enviados vía un commit. Recordemos que estos cambios no los ve la rama
+master.
+
+Ahora, volvamos a la rama master:
+
+    a. git checkout master
+
+Vamos a suponer que los mismos archivos que fueron modificados en la nueva rama, también van a ser 
+modificados en la rama master, y después de ello realizamos un commit, cabe resaltar que la nueva rama
+no ha visto estos cambios.
+
+Finalmente podemos fusionar estas dos ramas, para seguir nuestro desarrollo, con tanto los cambios en la
+nueva rama, como los cambios que se realizaron en master. El correcto flujo de trabajo, determina que
+vamos a unir la nueva rama a la rama master y seguiremos trabajando sobre la rama master:
+
+    a. git merge name_new_branch
+
+También es posible estando en la rama name_new_branch, hacer:
+
+    a. git merge master. 
+
+En cuyo caso estaremos uniendo la rama master a la rama name_new_branch, pero no es una buena prática.
+
+El merge es un nuevo commit.
