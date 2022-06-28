@@ -1,0 +1,109 @@
+========================================================================================================
+=====================    Vamos a mostrar un flujo de trabajo con git y Github. =========================
+========================================================================================================
+
+1. Debemos installar git en la máquina:
+
+    Desde la consola de Ubuntu vamos a ejecutar:
+
+        a. sudo apt-get update
+        b. sudo apt-get upgrade
+
+    Con todo ya actualizado, vamos a instalar a git en la máquina local.
+    a. sudo apt-get install git
+
+    Verificamos que esté instalado:
+        a. git
+        b. git --version
+
+
+2. En la carpeta de nuestro proyecto (Directorio de trabajo) inicializamos un manejador de versiones:
+    
+    Desde la consola escribimos:
+        a. git init
+
+    Al realizar lo anterior hemos creado dos conceptos nuevos:
+        1. Preparación o Staging: Acá vamos a enviar los archivos antes de enviarlos a la base de datos
+           de cambios histórico que le hemos hecho al proyecto.
+        2. Repositorio Local: Esta es la base de datos de cambios históricos que ha tenido el proyecto.
+
+3. Para pasar los cambios al área de Staging:
+
+    Desde la consola escribimos:
+        a. git add name_file
+    
+    Lo anterior le permite a git hacer un tracking (rastreo) de los cambios en ese archivo.
+
+Ejemplo: Vamos a suponer que tenemos un par de archivos "index.html" y "estilos.css". Y que hemos digitado
+         en consola --->  git add index.html. En este caso git ha "Tracked" o rastreado el archivo. Ahora,
+         si en ningún momento has hecho add al archivo .css, este archivo está "Untracked" o no rastreado,
+         NO importa los cambios que se hayan hecho, git no los va a rastrear, no se va a enterar, luego
+         no los va a guardar.
+
+4. Pasar los cambios de Staging al Repositorio Local:
+
+    Desde la consola escribimos:
+        a. git commit -m "mensaje_para_recordar_que_se_hizo"
+    Lo anterior pasará todo lo que esté en Staging al Repositorio Local
+
+Todo lo anterior es un flujo de trabajo normal en git. Pero... ¿Qué pasa cuándo tenemos un equipo de 
+trabajo y el equipo de tranajo tiene un servidor donde está la versión unificada de múltiples 
+desarrolladores?
+
+========================================================================================================
+===================================    Repositorio remoto Github.  =====================================
+========================================================================================================
+
+El repositorio del proyecto donde vas a trabajar está en un servidor remoto (Github, Gitlab, etc), para
+poder trabajar en el tu máquina debemos clonar el repositorio, para ello hacemos:
+    a. git clone url
+
+    Lo anterior trae los archivos a dos lugares, trae una copia del master a tu nuestro directorio de
+    trabajo (todos los archivos tal cual), además, crea la base de datos de los cambios históricos en el
+    repositorio local, y por supuesto deja Staging quieto, pero listo.
+
+¿Cómo será el flujo de trabajo en este caso?
+    a. git add
+    b. git commit
+    c. git push (Lo envía al repositorio remoto). Cabe resaltar que esto envía el HEAD del master.
+
+Supongamos además, que algún miembro de tu equipo de trabajo realizó un cambio, en este caso debemos:
+    a. git fetch
+
+    Esto trae los cambios al repositorio local, pero no me lo copia en mis archivos, para que esto 
+    suceda, debemos fusionar la última versión que está en el repositorio local con la versión actual
+    a. git merge
+
+Para realizar ambos, podemos hacer:
+    a. git pull
+
+
+========================================================================================================
+============================================  RAMAS ====================================================
+========================================================================================================
+
+master es nuestra rama principal, esta se crea al inicializar git, cada vez que hemos hecho un cambio, 
+estos viven en los commits que hemos hecho y están en distintos momentos (commit) es la rama master.
+
+El commit más reciente (el último commit) es lo que se conoce como cabecera (HEAD). Supongamos que 
+para probar algún desarrollo que se nos vino en mente,sin afectar el trabajo desarrollado hasta el 
+último commit. Es este caso vamos a crear un camino paralelo a la rama master, formando una nueva rama.
+Esta rama debe contener toda la información que tenemos hasta el último commit. Al estar en la nueva
+rama, la rama master no los va a observar, hasta que estas no sean fusionadas (merge).
+
+Para crear nuestra nueva rama vamos a la linea de comando:
+    a. git branch name_of_branch
+
+Para cambiar a la nueva rama:
+    a. git checkout name_of_branch
+
+Al estar en esta nueva rama, los siguientes commits vivirán en dicha rama sin afectar a la rama master.
+
+Si deseamos volver a la rama master, basta con ir a la terminal y escribir:
+    a. git checkout master.
+
+De lo anterior cabe resaltar que "checkout" nos va a servir para movernos entre ramas. Al volver a la rama
+master, los archivos de nuestro proyecto se actualizarán de manera automatica al contenido del último
+commit enviado y dicha rama.
+
+
