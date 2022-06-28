@@ -60,3 +60,78 @@ Finalmente, en Github debemos realizar un pull request y realizar el merge, (tod
     2. push (empujar) tiene la siguiente lógica: Vamos a empujar del repositorio local al repositorio
     remoto  (origin) la rama master del local.
 
+========================================================================================================
+==================================== TAGS Y VERSIONES EN GIT Y GITHUB ==================================
+========================================================================================================
+
+Recordemos que en Git podemos ver el historial de los commit de nuestro proyecto con:
+
+    a. git log
+
+Ahora, si escribimos:
+
+    a. git log --all    (Muestra todo)
+
+Para ver esto de manera más ordenada podemos escribir:
+
+    a. git log --all --graph --decorate --oneline
+
+Lo cual muestra todo de manera estética y comprimido
+
+En Ubutu podemos generar un "alias", esto para no tener un larguero de lo que queremos ver:
+
+    a. alias arbolito="git log --all --graph --decorate --oneline"
+
+Ahora cuando en consola escribimos arbolito, se obtendrá la visual de la historia de nuestro proyecto.
+
+
+Vamos a considerar que deseamos tener tener una etiqueta (tag) de mi proyecto hasta cierto punto, digamos
+v0.1, es decir, la versión 0.1 de nuestro proyecto. Para ello, en arbolito vamos a tomar el commit donde
+considereamos que nuestro proyecto está en la versión 0.1, para hacer necesitamos el hash del commit:
+
+    a. git tag -a v0.1 -m "messange" hash_del_commit
+
+Para verificar los tags que tenemos, escribimos:
+
+    a. git tags
+
+Para ver a que commit está asociado el tag, escribimos:
+
+    a. git show-ref --tags
+
+Deseamos que los tags los pueda ver alguien, estos son útiles en Github, luego, lo vamos a empujar a 
+Github. Recordemos que es recomendado siempre hacer un pull (jalar) del proyecto que está en remoto:
+
+    a. git pull origin main
+
+Ahora, vamos enviar el tag a Github:
+
+    a. git push origin --tags
+
+¿Qué pasá si creamos un tag errado?
+
+Vamos a suponer que hemos generado un tag llamado  ----->    dormido
+
+Recordemosque con:
+
+    a. git tag
+
+veremos todos nuestros tags. Vamos a matar nuestro tag dormido:
+
+    a. git tag -d dormido
+
+la d, después de tag corresponde a dormido.
+
+Sucede que dicho tag no está en Github, enonces, como es costumbre, escribimos:
+
+    a. git pull origin main
+
+Nuevamente hacemos push de los tags:
+
+    a git push origin --tags
+
+En este momento en el local, no tenemos el tag dormido, pero en remoto sí, solucionamos esto con:
+
+    a. git push origin :refs/tags/dormido
+
+Al recargar el navegador, ya no está el tag en Github.
