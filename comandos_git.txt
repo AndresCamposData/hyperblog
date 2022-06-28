@@ -140,3 +140,20 @@ También es posible estando en la rama name_new_branch, hacer:
 En cuyo caso estaremos uniendo la rama master a la rama name_new_branch, pero no es una buena prática.
 
 El merge es un nuevo commit.
+
+==============================
+=== Conflictos en el MERGE ===
+==============================
+
+Vamos a suponer que desde la rama master se han realizado cambios en algunos archivo, y támbien se ha
+hecho en la name_new_branch, sobre los mismos archivos y además en la misma parte del código. Al tratar
+de hacer un merge la rama hacia donde queremos que queden ese commit con ese merge, va a generar un 
+conflicto, pues cambiamos, digamos, el color de la página en un lado por verde y en el otro por azul.
+Cuando esto suceda el commit con el merge no se realizará y vscode, vscode, nos genera unas lineas de 
+donde indicará que versión queremos dejar, si la de verde a o la de azul, después de decidir, debemos
+realizar un nuevo commit:
+
+    a.  git commit -am "Solucione el conflicto de las ramas al fusionar"
+
+Note que al estar dicho conflicto, seremos nosotros si decidimos agregar esas diferencias o no a nuestra
+rama donde queremos que quede la fusión (MERGE).
