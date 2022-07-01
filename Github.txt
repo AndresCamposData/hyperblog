@@ -30,7 +30,7 @@ Debemos tener como salida:
 
 Note que tenemos de donde y hacia donde vamos a conectar con el repositorio remoto.
 
-Deseamos que es nuestro repositorio local tengamos los archivos del repositorio remoto, para ello vamos
+Deseamos que en nuestro repositorio local tengamos los archivos del repositorio remoto, para ello vamos
 a escribir:
 
     a. git pull origin main
@@ -135,3 +135,39 @@ En este momento en el local, no tenemos el tag dormido, pero en remoto sí, solu
     a. git push origin :refs/tags/dormido
 
 Al recargar el navegador, ya no está el tag en Github.
+
+=====================================================================================================
+=================================== Manejo de ramas en Github =======================================
+=====================================================================================================
+
+Recordemos que:
+
+    a. git checkout name_of_branch
+
+Nos permite movernos entre las ramas que hemos creado. Recordemos que los arhivos se actualizan de
+inmediato en vscode.
+
+Para ver todas las ramas de nuestro proyecto:
+    
+    a. git branch
+
+Otro comando para manejar ramas es:
+
+    a. git show-branch
+
+Lo que nos nuestra las ramas que existen y cuál ha sido su historia. Otro comando es:
+
+    a. git show-branch --all
+
+Lo que nos nuestra algo muy similar a lo anterior pero con un poco más de datos.
+
+Podemos usar el comando:
+
+    a. gitk
+
+Que nuestra lo sucedido de una manera mucho más bonita, es decir una interfaz gráfica chuzca.
+
+Vamos a enviar una nueva rama a Github
+
+    a. git pull origin main
+    b. git push origin name_of_new_branch
